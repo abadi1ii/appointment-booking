@@ -55,3 +55,83 @@
   <script src="script.js"></script>
 </body>
 </html>
+<!-- HTML Code -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حجز موعد</title>
+  <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+  <h1>حجز موعد</h1>
+  <form id="appointment-form">
+    <label for="appointment-name">الاسم</label>
+    <input type="text" id="appointment-name" name="name" required>
+    
+    <label for="appointment-date">تاريخ الموعد</label>
+    <input type="datetime-local" id="appointment-date" name="date" required>
+    
+    <button type="submit">حجز الموعد</button>
+  </form>
+
+  <script>
+    function initClient() {
+      gapi.client.init({
+        'apiKey': 'YOUR_API_KEY',
+        'clientId': 'YOUR_CLIENT_ID',
+        'scope': 'https://www.googleapis.com/auth/calendar',
+        'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+      }).then(function () {
+        console.log("Client initialized.");
+      });
+    }
+
+    function handleAuthClick(event) {
+      gapi.auth2.getAuthInstance().signIn().then(function() {
+        console.log("User signed in.");
+      });
+    }
+
+    function createEvent(eventData) {
+      var event = {
+        'summary': eventData.name,
+        'start': {
+          'dateTime': eventData.startDate,
+          'timeZone': 'Asia/Riyadh',
+        },
+        'end': {
+          'dateTime': eventData.endDate,
+          'timeZone': 'Asia/Riyadh',
+        },
+      };
+
+      gapi.client.calendar.events.insert({
+        'calendarId': 'primary',
+        'resource': event,
+      }).then(function(response) {
+        alert('تم إضافة الموعد إلى تقويم Google');
+      });
+    }
+
+    document.getElementById('appointment-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var name = document.getElementById('appointment-name').value;
+      var date = document.getElementById('appointment-date').value;
+
+      var eventData = {
+        name: name,
+        startDate: date,
+        endDate: date,
+      };
+      
+      createEvent(eventData);
+    });
+
+    gapi.load('client:auth2', initClient);
+  </script>
+
+  <button onclick="handleAuthClick()">تسجيل الدخول إلى حساب Google</button>
+</body>
+</html>
