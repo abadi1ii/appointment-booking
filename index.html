@@ -49,7 +49,8 @@
       gapi.client.init({
         'apiKey': 'AIzaSyCWvTf4JdoeKFGvc168BW1XvNjHwQQD2D4', // Replace with your API key
         'clientId': '579599510997-ep6m4nfml32d3k6fegkn3gfttpig3sp4.apps.googleusercontent.com', // Replace with your client ID
-        'scope': 'https://abadi1ii.github.io/appointment-booking/',
+      'redirect_uri' : 'https://abadi1ii.github.io/appointment-booking', // أو ما يتناسب مع مسار التطبيق الخاص بك
+        'scope': 'https://www.googleapis.com/auth/calendar/',
         'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
       }).then(function () {
         console.log("Client initialized.");
