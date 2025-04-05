@@ -1,0 +1,57 @@
+
+      
+    </form>
+
+    <div id="response" class="response"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حجز المواعيد</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>حجز موعد لشرح تطبيق بينه للمحامين</h1>
+    <form id="appointment-form">
+      <div class="form-group">
+        <label for="name">الاسم</label>
+        <input type="text" id="name" name="name" placeholder="أدخل اسمك" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">رقم الجوال</label>
+        <div class="phone-input">
+          <span class="country-code">+966</span>
+          <input type="text" id="phone" name="phone" placeholder="أدخل رقم الجوال" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="date">تاريخ الموعد</label>
+        <input type="text" id="date" name="date" placeholder="اختر تاريخ الموعد" required>
+      </div>
+
+      <button type="submit" class="btn">حجز الموعد</button>
+    </form>
+
+    <div id="response" class="response"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
